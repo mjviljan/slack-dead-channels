@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2017",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "strict": true,
+    "target": "es6",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true
+    /* --- Experimental options (for ES7 decorators) */
+    // "experimentalDecorators": true,
+    /* --- ...and emitting type metadata for them */
+    // "emitDecoratorMetadata": true,
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ]
+}
