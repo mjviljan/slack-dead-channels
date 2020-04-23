@@ -14,4 +14,13 @@ describe('Reporting channels by activity', () => {
 
         expect(report).toEqual(expectedReport)
     })
+
+    test('shows a message instead of a channel list if there are no channels with less than 3 members', () => {
+        const expectedReport = 'There are no channels with less than 3 members.\n'
+
+        const bigChannels = fakeChannels.filter((c) => c.num_members >= 3)
+        const report = listSmallChannels(bigChannels)
+
+        expect(report).toEqual(expectedReport)
+    })
 })

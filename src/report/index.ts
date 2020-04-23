@@ -7,15 +7,18 @@ type ChannelWithActivityTimestamp = Channel & {
     latestTimestamp?: number
 }
 
+const hasLessThan3Members = (channel: Channel): boolean => channel.num_members < 3
+
+const byMemberCount = (channel1: Channel, channel2: Channel) => channel1.num_members - channel2.num_members
+
+const toReportRow = (acc: string, channel: Channel): string => acc + `${channel.name} (${channel.num_members})\n`
+
 export const listSmallChannels = (channels: Channel[]): string => {
-    return (
-        'Channels with less than 3 members:\n' +
-        '----------------------------------\n' +
-        channels
-            .filter((c) => c.num_members < 3)
-            .sort((c1, c2) => c1.num_members - c2.num_members)
-            .reduce((acc, c) => acc + `${c.name} (${c.num_members})\n`, '')
-    )
+    const channelReport: string = channels.filter(hasLessThan3Members).sort(byMemberCount).reduce(toReportRow, '')
+
+    return channelReport
+        ? 'Channels with less than 3 members:\n----------------------------------\n' + channelReport
+        : 'There are no channels with less than 3 members.\n'
 }
 
 export default async function reportChannelsByActivity(apiClient: WebClient): Promise<string> {
