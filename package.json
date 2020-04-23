@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --fix",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

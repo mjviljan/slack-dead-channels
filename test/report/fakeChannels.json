@@ -1,0 +1,37 @@
+[
+  {
+    "id": "C01CHAN4U",
+    "name": "general",
+    "num_members": 150
+  },
+  {
+    "id": "C02CHAN4U",
+    "name": "three_is_a_crowd",
+    "num_members": 2
+  },
+  {
+    "id": "C03CHAN4U",
+    "name": "totally_dead",
+    "num_members": 0
+  },
+  {
+    "id": "C04CHAN4U",
+    "name": "random",
+    "num_members": 147
+  },
+  {
+    "id": "C05CHAN4U",
+    "name": "private_fun",
+    "num_members": 1
+  },
+  {
+    "id": "C06CHAN4U",
+    "name": "just_enough",
+    "num_members": 3
+  },
+  {
+    "id": "C07CHAN4U",
+    "name": "lone_rider",
+    "num_members": 1
+  }
+]
