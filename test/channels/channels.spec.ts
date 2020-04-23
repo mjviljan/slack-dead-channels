@@ -1,5 +1,4 @@
-import getChannels, { ConversationFetcher } from '../src/listConversations'
-import { WebAPICallResult } from '@slack/web-api'
+import getChannels, { ConversationFetcher, ConversationsListResult } from '../../src/channels'
 import * as fakeChannels from './fakeChannelListing.json'
 
 describe('Getting list of channels', () => {
@@ -33,11 +32,11 @@ describe('Getting list of channels', () => {
 })
 
 class FakeWebClient implements ConversationFetcher {
-    static returningChannelList(response: WebAPICallResult): FakeWebClient {
+    static returningChannelList(response: ConversationsListResult): FakeWebClient {
         return new FakeWebClient(response)
     }
 
-    private constructor(private fakeChannelListing: WebAPICallResult) {}
+    private constructor(private fakeChannelListing: ConversationsListResult) {}
 
     get conversations() {
         return {

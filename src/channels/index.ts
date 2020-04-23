@@ -1,7 +1,9 @@
 import { ConversationsListArguments, WebAPICallResult } from '@slack/web-api'
 
 export type Channel = {
+    id: string
     name: string
+    num_members: number
 }
 
 export type ConversationsListResult = WebAPICallResult & {
