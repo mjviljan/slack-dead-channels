@@ -11,6 +11,7 @@ if (!token) {
 }
 
 ;(async () => {
+    console.log('Fetching channel info...')
     const apiClient = new WebClient(token)
     console.log(await reportChannelsByActivity(apiClient))
 })()

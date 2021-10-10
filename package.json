@@ -4,6 +4,7 @@
   "description": "A Slack bot that returns all channels in a workspace with no new messages in the last n (given) days",
   "main": "src/index.ts",
   "scripts": {
+    "start": "ts-node src/index.ts",
     "lint": "prettier -w src/**/*.ts test/**/*.ts",
     "watch": "tsc -w",
     "test": "jest"
@@ -27,6 +28,7 @@
   "dependencies": {
     "@slack/web-api": "^6.1.0",
     "dotenv": "^8.2.0",
-    "ts-jest": "^26.5.3"
+    "ts-jest": "^26.5.3",
+    "ts-node": "^10.2.1"
   }
 }
