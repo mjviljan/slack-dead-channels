@@ -4,7 +4,7 @@
   "description": "A Slack bot that returns all channels in a workspace with no new messages in the last n (given) days",
   "main": "src/index.ts",
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx --fix",
+    "lint": "prettier -w src/**/*.ts test/**/*.ts",
     "watch": "tsc -w",
     "test": "jest"
   },
