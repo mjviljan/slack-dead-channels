@@ -18,7 +18,8 @@ describe('Getting list of messages for channel', () => {
             FakeWebClient.returningMessageList({ ok: true, messages: [fakeMessage] }),
             FAKE_CHANNEL_ID,
         )
-        expect(response).toBe(fakeMessage)
+        const expectedMessage = { type: fakeMessage.type, ts: fakeMessage.ts }
+        expect(response).toStrictEqual(expectedMessage)
     })
 
     test('returns undefined if Slack returns no messages', async () => {
