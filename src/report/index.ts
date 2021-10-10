@@ -57,18 +57,16 @@ export default async function reportChannelsByActivity(apiClient: WebClient): Pr
     const channels = await getChannels(apiClient)
 
     const channelsWithTimestamps = await Promise.all(
-        channels.map(
-            async (c: Channel): Promise<ChannelWithActivityTimestamp> => {
-                const latestMessage: Message | undefined = await getChannelMessages(apiClient, c.id)
+        channels.map(async (c: Channel): Promise<ChannelWithActivityTimestamp> => {
+            const latestMessage: Message | undefined = await getChannelMessages(apiClient, c.id)
 
-                if (!latestMessage) {
-                    return c
-                }
+            if (!latestMessage) {
+                return c
+            }
 
-                const latestTimestamp: number = parseInt(latestMessage.ts)
-                return { ...c, latestTimestamp }
-            },
-        ),
+            const latestTimestamp: number = parseInt(latestMessage.ts)
+            return { ...c, latestTimestamp }
+        }),
     )
 
     return listChannelsByInactiveDays(channelsWithTimestamps) + '\n' + listSmallChannels(channels)
