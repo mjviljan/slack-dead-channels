@@ -4,8 +4,18 @@ import getChannels, { Channel } from '../channels'
 import getChannelMessages, { Message } from '../messages'
 
 const DAY_IN_SECS = 60 * 60 * 24
+const NOW = new Date().getTime() / 1000
 
 const hasLessThan3Members = (channel: Channel): boolean => channel.num_members < 3
+
+const daysSince = (timestamp: number | undefined): number => {
+    if (!timestamp) return Infinity
+
+    return Math.floor((NOW - timestamp) / DAY_IN_SECS)
+}
+
+const inactiveForDays = (limit: number) => (channel: ChannelWithActivityTimestamp) =>
+    daysSince(channel.latestTimestamp) >= limit
 
 const byLastActivity = (channel1: ChannelWithActivityTimestamp, channel2: ChannelWithActivityTimestamp) => {
     if (!channel1.latestTimestamp) return -1 // channel 1 has never had messages
@@ -20,8 +30,7 @@ const byMemberCount = (channel1: Channel, channel2: Channel) => channel1.num_mem
 const timestampToString = (timestamp: number | undefined): string => {
     if (!timestamp) return 'never'
 
-    const now = new Date().getTime() / 1000
-    const daysSinceActive = Math.floor((now - timestamp) / DAY_IN_SECS)
+    const daysSinceActive = daysSince(timestamp)
 
     return daysSinceActive ? daysSinceActive + ' days' : 'today'
 }
@@ -31,13 +40,17 @@ const toActivityReportRow = (acc: string, chan: ChannelWithActivityTimestamp): s
 
 const toMemberCountReportRow = (acc: string, chan: Channel): string => acc + `${chan.name} (${chan.num_members})\n`
 
+const noInactivityLimit = () => true
+
 export type ChannelWithActivityTimestamp = {
     name: string
     latestTimestamp?: number
 }
 
-export const listChannelsByInactiveDays = (channels: ChannelWithActivityTimestamp[]): string => {
-    const channelReport = channels.sort(byLastActivity).reduce(toActivityReportRow, '')
+export const listChannelsByInactiveDays = (channels: ChannelWithActivityTimestamp[], limit?: number): string => {
+    const inactiveForLimitDays = limit ? inactiveForDays(limit) : noInactivityLimit
+
+    const channelReport = channels.filter(inactiveForLimitDays).sort(byLastActivity).reduce(toActivityReportRow, '')
 
     return 'Channels ordered by inactivity\n' + '------------------------------\n' + channelReport
 }
@@ -53,7 +66,7 @@ export const listSmallChannels = (channels: Channel[]): string => {
         : 'There are no channels with less than 3 members.\n'
 }
 
-export default async function reportChannelsByActivity(apiClient: WebClient): Promise<string> {
+export default async function reportChannelsByActivity(apiClient: WebClient, limit?: number): Promise<string> {
     const channels = await getChannels(apiClient)
 
     const channelsWithTimestamps = await Promise.all(
@@ -69,5 +82,5 @@ export default async function reportChannelsByActivity(apiClient: WebClient): Pr
         }),
     )
 
-    return listChannelsByInactiveDays(channelsWithTimestamps) + '\n' + listSmallChannels(channels)
+    return listChannelsByInactiveDays(channelsWithTimestamps, limit) + '\n' + listSmallChannels(channels)
 }

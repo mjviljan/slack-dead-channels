@@ -1,12 +1,15 @@
 # A bot for reporting inactive Slack channels
 
-The bot fetches the latest message¹ for each public channel in a Slack workspace and prints a report of all channels including their name and the time of their latest message, ordered from the most inactive channel to the most active.
+The program fetches the latest message¹ for each public channel in a Slack workspace and prints a report of all channels including their name and the time it's been since their latest message (in days), ordered from the most inactive channel to the most active.
 
 It also reports all channels with less than 3 members as such channels could possibly be replaced with direct messages.
 
-To do:
-- [ ] Add a limit parameter for showing only channels with inactivity longer than _n_ days
+The program takes an optional parameter to limit the results of the first listing to only those channels that have been inactive for longer than the given amount of days.
 
-¹Note: The bot fetches only the latest top-level post to each channel, so replies made in threads are not taken into account.
+Running the program with a limit parameter:
+```
+yarn start --limit 100
+``` 
+(or `yarn start -l 100` in short).
 
-(Also, it's not really _a bot_ yet, just a program you can run locally...)
+¹Note: The program fetches only the latest top-level post to each channel, so replies made in threads are not taken into account.

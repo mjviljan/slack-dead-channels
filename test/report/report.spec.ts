@@ -4,8 +4,10 @@ import { ChannelWithActivityTimestamp, listChannelsByInactiveDays, listSmallChan
 const DAY_IN_SECS = 60 * 60 * 24
 
 describe('Reporting channels by activity', () => {
-    test('lists channels by inactive days in decremental order', () => {
-        const now = new Date().getTime() / 1000
+    describe('lists channels by inactive days in decremental order', () => {
+        // adjust the "now" of the test a bit (3 s.) so that it's earlier
+        // than the "now" of the program (i.e. messages aren't in the future)
+        const now = new Date().getTime() / 1000 - 180
         const channelsWithTimestamps: ChannelWithActivityTimestamp[] = [
             {
                 name: 'channel_uno',
@@ -25,16 +27,29 @@ describe('Reporting channels by activity', () => {
             },
         ]
 
-        const expectedReport =
-            'Channels ordered by inactivity\n' +
-            '------------------------------\n' +
-            'channel_cuatro (never)\n' +
-            'channel_tres (450 days)\n' +
-            'channel_dos (25 days)\n' +
-            'channel_uno (today)\n'
-        const report = listChannelsByInactiveDays(channelsWithTimestamps)
+        test('...without a day limit', () => {
+            const expectedReport =
+                'Channels ordered by inactivity\n' +
+                '------------------------------\n' +
+                'channel_cuatro (never)\n' +
+                'channel_tres (450 days)\n' +
+                'channel_dos (25 days)\n' +
+                'channel_uno (today)\n'
+            const report = listChannelsByInactiveDays(channelsWithTimestamps)
 
-        expect(report).toEqual(expectedReport)
+            expect(report).toEqual(expectedReport)
+        })
+
+        test('...with a day limit', () => {
+            const expectedReport =
+                'Channels ordered by inactivity\n' +
+                '------------------------------\n' +
+                'channel_cuatro (never)\n' +
+                'channel_tres (450 days)\n'
+            const report = listChannelsByInactiveDays(channelsWithTimestamps, 449)
+
+            expect(report).toEqual(expectedReport)
+        })
     })
 
     test('lists small (with less than 3 members) channels by member count in incremental order', () => {
