@@ -1,6 +1,6 @@
 {
   "name": "slack-dead-channels",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Slack bot that returns all channels in a workspace with no new messages in the last n (given) days",
   "main": "src/index.ts",
   "scripts": {
@@ -13,16 +13,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^29.1.1",
-    "@types/node": "^18.8.2",
-    "jest": "^29.1.2",
-    "prettier": "^2.7.1",
-    "ts-jest": "^29.0.3",
-    "typescript": "^4.8.4"
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.4",
+    "jest": "^29.6.1",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@slack/web-api": "6.7.2",
-    "dotenv": "^16.0.3",
+    "@slack/web-api": "6.8.1",
+    "dotenv": "^16.3.1",
     "ts-node": "^10.9.1"
   }
 }
