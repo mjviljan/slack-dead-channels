@@ -13,3 +13,9 @@ yarn start --limit 100
 (or `yarn start -l 100` in short).
 
 ¹Note: The program fetches only the latest top-level post to each channel, so replies made in threads are not taken into account.
+
+## Possible issues
+
+If the Slack organization has plenty of channels, fetching their latest activity with numerous calls to Slack's API may fail because of rate limiting on the API's end.
+
+It's possible the API has changed and there would be a better way to get the needed info nowadays, but if not, the best way to get around the limitation is to limit the number of channels to fetch in the code. (There's no parameter for that.)
