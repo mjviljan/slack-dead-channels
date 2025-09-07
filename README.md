@@ -4,10 +4,30 @@ The program fetches the latest message¹ for each public channel in a Slack work
 
 It also reports all channels with less than 3 members as such channels could possibly be replaced with direct messages.
 
-The program takes an optional parameter to limit the results of the first listing to only those channels that have been inactive for longer than the given amount of days.
+## Configuration
 
-Running the program with a limit parameter:
-```
+You need to create and install a new app to your Slack workspace following these steps:
+- Create a new app on the [app page](https://api.slack.com/apps)
+- Under "OAuth & Permissions", add the user token scopes `channels:history` and `channels:read`
+- Install the app to your workspace
+- Add a User OAuth Token
+- Rename/copy the file `.env.template` as `.env`, and add your newly-created token as the value of `SLACK_TOKEN`
+
+## Running the program
+
+You can run the program by running the following command in the terminal in the project root: 
+```shell
+yarn start
+``` 
+
+### Limiting the output
+
+By default the program lists all public channels in the workspace, reporting the number of inactive days for each (as well as all the channels with less than 3 members).
+
+However, you can run the program with an optional parameter to limit the results of the first listing to only those channels that have been inactive for longer than the given amount of days.
+
+Run the program and only list channels (in the inactivity listing) that have been quiet for at least 100 days:
+```shell
 yarn start --limit 100
 ``` 
 (or `yarn start -l 100` in short).
