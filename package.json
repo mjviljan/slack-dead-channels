@@ -1,28 +1,28 @@
 {
-  "name": "slack-dead-channels",
-  "version": "1.0.3",
-  "description": "A Slack bot that returns all channels in a workspace with no new messages in the last n (given) days",
-  "main": "src/index.ts",
-  "scripts": {
-    "start": "ts-node src/index.ts",
-    "lint": "prettier -w src/**/*.ts test/**/*.ts",
-    "watch": "tsc -w",
-    "test": "jest"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/node": "^22.18.1",
-    "jest": "^30.1.3",
-    "prettier": "^3.6.2",
-    "ts-jest": "^29.4.1",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "@slack/web-api": "^7.10.0",
-    "dotenv": "^17.2.2",
-    "ts-node": "^10.9.2"
-  }
+    "name": "slack-dead-channels",
+    "version": "1.0.3",
+    "description": "A Slack bot that returns all channels in a workspace with no new messages in the last n (given) days",
+    "main": "src/index.ts",
+    "scripts": {
+        "start": "ts-node src/index.ts",
+        "lint": "prettier -w src/**/*.ts test/**/*.ts",
+        "watch": "tsc -w",
+        "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.10.1",
+        "jest": "^30.2.0",
+        "prettier": "^3.7.4",
+        "ts-jest": "^29.4.6",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "@slack/web-api": "^7.13.0",
+        "dotenv": "^17.2.3",
+        "ts-node": "^10.9.2"
+    }
 }
