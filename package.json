@@ -7,18 +7,16 @@
         "start": "ts-node src/index.ts",
         "lint": "prettier -w src/**/*.ts test/**/*.ts",
         "watch": "tsc -w",
-        "test": "jest"
+        "test": "vitest"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/jest": "^30.0.0",
-        "@types/node": "^24.10.1",
-        "jest": "^30.2.0",
-        "prettier": "^3.7.4",
-        "ts-jest": "^29.4.6",
-        "typescript": "^5.9.3"
+        "@types/node": "^25.0.10",
+        "prettier": "^3.8.1",
+        "typescript": "^5.9.3",
+        "vitest": "^4.0.18"
     },
     "dependencies": {
         "@slack/web-api": "^7.13.0",

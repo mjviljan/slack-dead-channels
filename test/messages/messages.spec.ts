@@ -1,5 +1,6 @@
-import getChannelMessages, { MessageHistoryFetcher, LatestMessagesResult } from '../../src/messages'
-import * as fakeMessage from './fakeMessage.json'
+import getChannelMessages, { LatestMessagesResult, MessageHistoryFetcher } from '../../src/messages'
+import fakeMessage from './fakeMessage.json'
+import { fail } from 'node:assert'
 
 describe('Getting list of messages for channel', () => {
     const FAKE_CHANNEL_ID = 'CH4N3L'

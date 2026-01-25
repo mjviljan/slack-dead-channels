@@ -12,14 +12,12 @@
     "target": "es6",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "resolveJsonModule": true
-    /* --- Experimental options (for ES7 decorators) */
-    // "experimentalDecorators": true,
-    /* --- ...and emitting type metadata for them */
-    // "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+      "src/**/*",
+      "test/**/*",
+      "node_modules/vitest/globals.d.ts"
   ]
 }

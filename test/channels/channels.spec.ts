@@ -1,5 +1,6 @@
 import getChannels, { ConversationFetcher, ConversationsListResult } from '../../src/channels'
-import * as fakeChannels from './fakeChannelListing.json'
+import fakeChannels from './fakeChannelListing.json'
+import { fail } from 'node:assert'
 
 describe('Getting list of channels', () => {
     test('throws an error when response has a negative "ok" flag', async () => {
