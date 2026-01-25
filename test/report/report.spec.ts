@@ -1,4 +1,4 @@
-import * as fakeChannels from './fakeChannels.json'
+import fakeChannels from './fakeChannels.json'
 import { ChannelWithActivityTimestamp, listChannelsByInactiveDays, listSmallChannels } from '../../src/report'
 
 const DAY_IN_SECS = 60 * 60 * 24
