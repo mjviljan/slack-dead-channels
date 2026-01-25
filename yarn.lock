@@ -367,10 +367,10 @@
   dependencies:
     undici-types "~7.10.0"
 
-"@types/node@^24.10.1":
-  version "24.10.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.10.1.tgz#91e92182c93db8bd6224fca031e2370cef9a8f01"
-  integrity sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==
+"@types/node@^25.0.10":
+  version "25.0.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-25.0.10.tgz#4864459c3c9459376b8b75fd051315071c8213e7"
+  integrity sha512-zWW5KPngR/yvakJgGOmZ5vTBemDoSqF3AcV/LrO5u5wTWyEAVVh+IT39G4gtyAkh3CtTZs8aX/yRM82OfzHJRg==
   dependencies:
     undici-types "~7.16.0"
 
@@ -786,10 +786,10 @@ postcss@^8.5.6:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-prettier@^3.7.4:
-  version "3.7.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.7.4.tgz#d2f8335d4b1cec47e1c8098645411b0c9dff9c0f"
-  integrity sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==
+prettier@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.8.1.tgz#edf48977cf991558f4fcbd8a3ba6015ba2a3a173"
+  integrity sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==
 
 proxy-from-env@^1.1.0:
   version "1.1.0"
