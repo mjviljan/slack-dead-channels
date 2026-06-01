@@ -16,7 +16,7 @@
         "@types/node": "^25.0.10",
         "prettier": "^3.8.1",
         "typescript": "^5.9.3",
-        "vitest": "^4.0.18"
+        "vitest": "^4.1.0"
     },
     "dependencies": {
         "@slack/web-api": "^7.13.0",
